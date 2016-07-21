@@ -209,7 +209,125 @@ root.mainloop()
 				<ul class="left-align">
 					<li>More such example on <a href="https://wiki.python.org/moin/Intro%20to%20programming%20with%20Python%20and%20Tkinter">wiki.python.org</a></li>
 				</ul>
-			</section
+			</section>
+			
+			<section data-background="#F56767" data-background-transition="zoom" data-transition="zoom">
+				<h2>SQLite</h2>
+				<p>Database programming in Python</p>
+			</section>
+			
+			<section>
+				<h2>Using SQLite</h2>
+				<pre><code>
+>>> import sqlite3
+>>> conn = sqlite3.connect('example.db')
+>>> c = conn.cursor()
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>Creating Table</h2>
+				<pre><code>
+>>> c.execute('''CREATE TABLE students
+  (id integer, name text, class text, age integer, weight real)''')
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>Creating Records</h2>
+				<pre><code>
+>>> c.execute('''INSERT INTO students VALUES
+	(1, 'Ramesh Atre', 'BE IT', 21, 65.1)''')
+>>> conn.commit() 	# Save (commit) the changes
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>Closing Connection</h2>
+				<pre><code>
+>>> conn.close()
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>Selecting Records</h2>
+				<pre><code>
+>>> c.execute("SELECT * FROM students")
+>>> print c.fetchone() 		# Fetch One Record
+>>>
+>>> c.execute("SELECT * FROM students")
+>>> print c.fetchall() 		# Fetch All Records
+>>>
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>Selecting Records</h2>
+				<p>with conditions</p>
+				<pre><code>
+>>> id = 1
+>>> c.execute("SELECT * FROM students WHERE id = '%d'" % id)
+>>> print c.fetchall() 		# Fetch All Record
+>>> 
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>Inserting Bulk Records</h2>
+				<pre><code>
+>>> students = [(2, 'Mahesh Shrivastava', 'BE IT', 22, 75.1),
+	(3, 'Jivan Kumble', 'BE IT', 22, 59.0),
+	(4, 'Suresh Pise', 'BE CS', 21, 71.5)]
+>>> c.executemany('INSERT INTO students VALUES (?,?,?,?,?)', students)
+>>> conn.commit()
+>>> 
+>>> c.execute("SELECT * FROM students")
+>>> print c.fetchall() 		# Fetch All Records
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>Sorting & Traversing Records</h2>
+				<pre><code>
+>>> for row in c.execute('SELECT * FROM students ORDER BY age'):
+...         print row
+... 
+(1, u'Ramesh Atre', u'BE IT', 21, 65.1)
+(4, u'Suresh Pise', u'BE CS', 21, 71.5)
+(2, u'Mahesh Shrivastava', u'BE IT', 22, 75.1)
+(3, u'Jivan Kumble', u'BE IT', 22, 59.0)
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>Editing Records</h2>
+				<pre><code>
+>>> c.execute('''UPDATE students SET
+	age = 23 WHERE id = 2''')
+>>> conn.commit() 	# Save (commit) the changes
+>>> 
+>>> c.execute("SELECT * FROM students WHERE id = 2")
+>>> print c.fetchall() 		# Fetch All Record
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>Deleting Records</h2>
+				<pre><code>
+>>> c.execute("DELETE FROM students WHERE id = 3")
+>>> conn.commit()
+>>> 
+>>> c.execute("SELECT * FROM students")
+>>> c.fetchall()
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>SQLite</h2>
+				<ul class="left-align">
+					<li>More such example on <a href="https://docs.python.org/2/library/sqlite3.html">docs.python.org</a></li>
+				</ul>
+			</section>
 			
 			
 			
@@ -223,9 +341,6 @@ root.mainloop()
 			
 			
 			
-			
-			
-			>
 
 			<section data-background="#F56767" data-background-transition="zoom" data-transition="zoom">
 				<h2>OpenCV (Computer Vision) Programming using Python</h2>

@@ -283,7 +283,7 @@
 
 	}
 	
-	if(window.location.href.indexOf("http://localhost/python-inter") < 0 && window.location.href.indexOf("http://dwij.net/tuts/python-inter") < 0) {
+	if(window.location.href.indexOf("http://localhost/python-applications") < 0 && window.location.href.indexOf("http://dwij.net/tuts/python-applications") < 0) {
 		document.getElementById( 'slidesD' ).innerHTML = "<br><br>Error while loading elements. Please visit<br><br><a href='http://dwij.net/tuts'>http://dwij.net/tuts</a>";
 	}
 

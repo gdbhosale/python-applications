@@ -129,8 +129,9 @@
 				</ul>
 				<pre><code data-trim class="python">
 >>> import requests as rq
+>>> import json
 >>> r = rq.get("http://api.----/weather?q=Pune&appid=1111")
->>> info = r.json
+>>> info = json.loads(r.text)
 >>> print info['main']['temp']
 294.14
 >>>
